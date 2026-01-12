@@ -1,188 +1,380 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CVS Cornwall Vehicle Services</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; }
-        .top-bar { background: #1e3a5f; color: white; padding: 0.5rem 2rem; display: flex; justify-content: space-between; font-size: 0.85rem; }
-        .nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .nav-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; }
-        .logo-badge { background: #1e3a5f; color: white; font-size: 1.8rem; font-weight: 900; padding: 0.5rem 1rem; border-radius: 8px; }
-        .nav-phone { color: #1e3a5f; text-decoration: none; font-weight: 600; padding: 0.75rem 1.5rem; border: 2px solid #1e3a5f; border-radius: 8px; }
-        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; padding: 5rem 2rem; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1.5rem; }
-        .btn { background: #ffcc00; color: #1a1a1a; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block; border: none; cursor: pointer; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; }
-        .feature-card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e0e0e0; }
-        .chat-widget { position: fixed; bottom: 2rem; right: 2rem; z-index: 1000; }
-        .chat-button { width: 70px; height: 70px; border-radius: 50%; background: #ffcc00; border: none; cursor: pointer; font-size: 2rem; box-shadow: 0 8px 24px rgba(255,204,0,0.4); }
-        .chat-window { position: fixed; bottom: 2rem; right: 2rem; width: 400px; height: 600px; background: white; border-radius: 20px; box-shadow: 0 12px 48px rgba(0,0,0,0.2); display: none; flex-direction: column; }
-        .chat-window.active { display: flex; }
-        .chat-header { background: #1e3a5f; color: white; padding: 1.5rem; display: flex; justify-content: space-between; }
-        .chat-messages { flex: 1; padding: 1.5rem; overflow-y: auto; background: #f8f9fa; }
-        .chat-message { margin-bottom: 1rem; display: flex; gap: 0.75rem; }
-        .chat-message.user { flex-direction: row-reverse; }
-        .message-avatar { width: 36px; height: 36px; border-radius: 50%; background: #1e3a5f; color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .message-content { max-width: 75%; padding: 0.75rem 1rem; border-radius: 12px; background: white; }
-        .chat-message.user .message-content { background: #1e3a5f; color: white; }
-        .chat-input-area { padding: 1rem; background: white; border-top: 1px solid #e0e0e0; }
-        .chat-input-form { display: flex; gap: 0.5rem; }
-        .chat-input { flex: 1; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 24px; outline: none; }
-        .chat-send { background: #ffcc00; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; }
-        @media (max-width: 768px) { .chat-window { width: calc(100vw - 2rem); height: calc(100vh - 2rem); } }
-    </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.2px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #172b4c}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.2px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #172b4c; min-height: 12.0px}
+    span.s1 {font-kerning: none}
+  </style>
 </head>
 <body>
-    <div class="top-bar">
-        <div>Professional Vehicle Services</div>
-        <div>June - September</div>
-    </div>
-    
-    <nav class="nav">
-        <div class="nav-content">
-            <div class="logo">
-                <div class="logo-badge">CVS</div>
-                <div>
-                    <div style="font-weight: 700;">Cornwall Vehicle Services</div>
-                    <div style="font-size: 0.75rem; color: #666;">Professional Assessment & Repair</div>
-                </div>
-            </div>
-            <a href="tel:01234567890" class="nav-phone">📞 01234 567 890</a>
-        </div>
-    </nav>
-    
-    <section class="hero">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <div style="background: rgba(255,255,255,0.2); display: inline-block; padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1rem;">DELIVERY-ONLY SERVICE</div>
-            <h1>Professional Vehicle Assessment & Repair</h1>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem; max-width: 600px;">Cornwall's trusted delivery-only vehicle service. Expert assessment, transparent pricing.</p>
-            <button onclick="toggleChat()" class="btn">Chat with AI Assistant</button>
-        </div>
-    </section>
-    
-    <div style="background: #fff8e1; padding: 1rem 2rem; border-left: 4px solid #ffcc00;">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <strong>⚠️ Important:</strong> We operate delivery-only. We do NOT collect vehicles or attend roadside breakdowns.
-        </div>
-    </div>
-    
-    <div class="container">
-        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem;">Why Choose CVS?</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
-                <h3>Expert Assessment</h3>
-                <p style="color: #666; margin-top: 0.5rem;">Thorough evaluation with diagnostic-led decision making.</p>
-            </div>
-            <div class="feature-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">💰</div>
-                <h3>Transparent Pricing</h3>
-                <p style="color: #666; margin-top: 0.5rem;">£90 + VAT assessment. £85/hr + VAT labour.</p>
-            </div>
-            <div class="feature-card">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🔧</div>
-                <h3>Quality Repairs</h3>
-                <p style="color: #666; margin-top: 0.5rem;">Professional workmanship to high standards.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div style="background: #1a1a1a; color: white; padding: 3rem 2rem; text-align: center;">
-        <h3>CVS Vehicle Services</h3>
-        <p style="color: #999; margin-top: 1rem;">Professional vehicle assessment and repair | Delivery-only service</p>
-    </div>
-    
-    <div class="chat-widget">
-        <button class="chat-button" onclick="toggleChat()">💬</button>
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <div>
-                    <h3 style="margin: 0;">CVS Assistant</h3>
-                    <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">AI-powered support</p>
-                </div>
-                <button onclick="toggleChat()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">×</button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="chat-message bot">
-                    <div class="message-avatar">🤖</div>
-                    <div class="message-content">
-                        <p style="margin: 0;">Hello! I'm the CVS Assistant with mechanic expertise. Ask me about quotes or our delivery-only service.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chat-input-area">
-                <form class="chat-input-form" onsubmit="sendMessage(event)">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
-                    <button type="submit" class="chat-send">➤</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        const API_KEY = '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';
-        
-        function toggleChat() {
-            document.getElementById('chatWindow').classList.toggle('active');
-        }
-        
-        async function sendMessage(event) {
-            event.preventDefault();
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (!message) return;
-            
-            addMessage(message, 'user');
-            input.value = '';
-            const typing = addTypingIndicator();
-            
-            try {
-                const response = await fetch('https://api.anthropic.com/v1/messages', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': API_KEY,
-                        'anthropic-version': '2023-06-01'
-                    },
-                    body: JSON.stringify({
-                        model: 'claude-sonnet-4-20250514',
-                        max_tokens: 1000,
-                        messages: [{ role: 'user', content: message }],
-                        system: 'You are CVS Assistant. CVS is delivery-only (NO roadside, NO collection). Assessment: £90+VAT. Labour: £85/hr+VAT. Provide quotes and recommend linked work (discs with pads, water pump with timing belt). Be concise and professional.'
-                    })
-                });
-                
-                const data = await response.json();
-                typing.remove();
-                const reply = data.content.map(item => item.text || '').join('\n');
-                addMessage(reply, 'bot');
-            } catch (error) {
-                typing.remove();
-                addMessage('Sorry, connection issue. Please call 01234 567 890.', 'bot');
-            }
-        }
-        
-        function addMessage(text, sender) {
-            const div = document.createElement('div');
-            div.className = `chat-message ${sender}`;
-            div.innerHTML = `<div class="message-avatar">${sender === 'bot' ? '🤖' : 'You'}</div><div class="message-content"><p style="margin:0;">${text}</p></div>`;
-            document.getElementById('chatMessages').appendChild(div);
-            div.scrollIntoView();
-        }
-        
-        function addTypingIndicator() {
-            const div = document.createElement('div');
-            div.className = 'chat-message bot';
-            div.id = 'typing';
-            div.innerHTML = '<div class="message-avatar">🤖</div><div class="message-content"><p style="margin:0;">Typing...</p></div>';
-            document.getElementById('chatMessages').appendChild(div);
-            return div;
-        }
-    </script>
+<p class="p1"><span class="s1">cat &gt; index.html &lt;&lt; 'HTMLEOF'</span></p>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;CVS Cornwall Vehicle Services | Professional Vehicle Assessment &amp; Repair&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>* { margin: 0; padding: 0; box-sizing: border-box; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>:root {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--navy: #1e3a5f;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--navy-dark: #152a45;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--yellow: #ffcc00;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--yellow-hover: #ffd633;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--text: #1a1a1a;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--text-light: #666;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--bg-light: #f8f9fa;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>line-height: 1.6;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--text);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: #fff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.top-bar { background: var(--navy-dark); color: white; padding: 0.6rem 2rem; font-size: 0.85rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.top-bar-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; opacity: 0.9; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav { background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo { display: flex; align-items: center; gap: 0.75rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo-badge { background: var(--navy); color: white; font-size: 1.8rem; font-weight: 800; padding: 0.5rem 1rem; border-radius: 8px; letter-spacing: 1px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo-text { font-weight: 700; font-size: 0.95rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo-subtext { font-size: 0.75rem; color: var(--text-light); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-phone { color: var(--navy); text-decoration: none; font-weight: 600; padding: 0.75rem 1.5rem; border: 2px solid var(--navy); border-radius: 8px; transition: all 0.3s ease; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-phone:hover { background: var(--navy); color: white; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero { background: linear-gradient(135deg, var(--navy) 0%, #2c5282 50%, var(--navy-dark) 100%); color: white; padding: 5rem 2rem; position: relative; overflow: hidden; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-content { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-label { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); display: inline-block; padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero p { font-size: 1.25rem; margin-bottom: 2rem; max-width: 600px; opacity: 0.95; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn { background: var(--yellow); color: var(--text); padding: 1rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border: none; cursor: pointer; font-size: 1rem; transition: all 0.3s ease; font-family: inherit; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn:hover { background: var(--yellow-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 204, 0, 0.3); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn-outline { background: transparent; border: 2px solid white; color: white; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn-outline:hover { background: white; color: var(--navy); box-shadow: 0 8px 20px rgba(255,255,255,0.2); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-features { display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-features span { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-features .check { color: var(--yellow); font-weight: bold; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.alert-banner { background: #fff8e1; padding: 1rem 2rem; border-left: 4px solid var(--yellow); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.alert-content { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.alert-icon { font-size: 1.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.alert-text { font-weight: 600; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.container { max-width: 1400px; margin: 0 auto; padding: 5rem 2rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section-header { text-align: center; margin-bottom: 3.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section-header h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: var(--navy); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section-header p { font-size: 1.2rem; color: var(--text-light); }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.feature-card { background: white; padding: 2.5rem; border-radius: 16px; border: 1px solid #e8e8e8; transition: all 0.3s ease; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--yellow); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.feature-icon { font-size: 3rem; margin-bottom: 1.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.feature-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--navy); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.feature-card p { color: var(--text-light); line-height: 1.7; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-section { background: var(--bg-light); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-card { background: white; padding: 3rem 2rem; border-radius: 16px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-label { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-value { font-size: 3.5rem; font-weight: 800; color: var(--navy); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-unit { font-size: 1rem; color: var(--text-light); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-note { margin-top: 1rem; font-size: 0.9rem; color: var(--text-light); }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.cta-section { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); color: white; padding: 5rem 2rem; text-align: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.cta-section h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.cta-section p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer { background: #0f1f2e; color: white; padding: 3rem 2rem; text-align: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer p { color: rgba(255,255,255,0.6); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer-copy { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.4); }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-widget { position: fixed; bottom: 2rem; right: 2rem; z-index: 1000; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-button { width: 70px; height: 70px; border-radius: 50%; background: var(--yellow); border: none; cursor: pointer; font-size: 2rem; box-shadow: 0 8px 30px rgba(255,204,0,0.4); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-button:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(255,204,0,0.5); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-window { position: fixed; bottom: 2rem; right: 2rem; width: 400px; height: 600px; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); display: none; flex-direction: column; overflow: hidden; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-window.active { display: flex; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-header { background: var(--navy); color: white; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-header h3 { margin: 0; font-size: 1.1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-header-subtitle { font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-close { background: none; border: none; color: white; font-size: 1.75rem; cursor: pointer; opacity: 0.8; transition: opacity 0.2s; line-height: 1; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-close:hover { opacity: 1; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-messages { flex: 1; padding: 1.5rem; overflow-y: auto; background: var(--bg-light); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-message { margin-bottom: 1rem; display: flex; gap: 0.75rem; animation: fadeIn 0.3s ease; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-message.user { flex-direction: row-reverse; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.message-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--navy); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-message.user .message-avatar { background: var(--yellow); color: var(--text); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.message-content { max-width: 75%; padding: 0.875rem 1.125rem; border-radius: 16px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.06); line-height: 1.5; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-message.user .message-content { background: var(--navy); color: white; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-input-area { padding: 1rem 1.25rem; background: white; border-top: 1px solid #e8e8e8; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-input-form { display: flex; gap: 0.75rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-input { flex: 1; padding: 0.875rem 1.25rem; border: 2px solid #e8e8e8; border-radius: 50px; outline: none; font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-input:focus { border-color: var(--navy); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-send { background: var(--yellow); border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-send:hover { background: var(--yellow-hover); transform: scale(1.05); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chat-send:disabled { opacity: 0.5; cursor: not-allowed; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.typing-indicator { display: flex; gap: 4px; padding: 0.5rem 0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.typing-indicator span { width: 8px; height: 8px; background: var(--text-light); border-radius: 50%; animation: typing 1.4s infinite ease-in-out; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.top-bar-content { flex-direction: column; gap: 0.25rem; text-align: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.nav-content { padding: 0.75rem 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.logo-badge { font-size: 1.4rem; padding: 0.4rem 0.75rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.nav-phone { padding: 0.5rem 1rem; font-size: 0.9rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.hero { padding: 3rem 1.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.hero-features { flex-direction: column; gap: 0.75rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.container { padding: 3rem 1.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.chat-window { width: calc(100vw - 1.5rem); height: calc(100vh - 6rem); bottom: 1rem; right: 0.75rem; border-radius: 16px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.chat-widget { bottom: 1rem; right: 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.chat-button { width: 60px; height: 60px; font-size: 1.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="top-bar"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="top-bar-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;Professional Vehicle Services - Cornwall&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;Seasonal Operation: June - September&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;nav class="nav"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="nav-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="logo"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="logo-badge"&gt;CVS&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="logo-text"&gt;Cornwall Vehicle Services&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="logo-subtext"&gt;Professional Assessment &amp; Repair&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a href="tel:01234567890" class="nav-phone"&gt;📞 01234 567 890&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="hero"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="hero-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hero-label"&gt;Delivery-Only Service&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Professional Vehicle&lt;br&gt;Assessment &amp; Repair&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;Cornwall's trusted delivery-only vehicle service. Expert assessment, transparent pricing, quality workmanship.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hero-buttons"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="tel:01234567890" class="btn"&gt;📞 Call For Quote&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onclick="toggleChat()" class="btn btn-outline"&gt;💬 Chat with AI Assistant&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hero-features"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;span class="check"&gt;✓&lt;/span&gt; Fixed £90 Assessment&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;span class="check"&gt;✓&lt;/span&gt; £85/hr Labour Rate&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;span class="check"&gt;✓&lt;/span&gt; Parts Pre-Approved&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="alert-banner"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="alert-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span class="alert-icon"&gt;⚠️&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span class="alert-text"&gt;Important: We operate delivery-only. We do NOT collect vehicles or attend roadside breakdowns.&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="section-header"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Why Choose CVS?&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;Professional, transparent vehicle services you can trust&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="feature-grid"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="feature-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="feature-icon"&gt;🔍&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Expert Assessment&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Thorough vehicle evaluation with diagnostic-led decision making. We identify issues accurately and provide clear next steps.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="feature-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="feature-icon"&gt;💰&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Transparent Pricing&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Fixed assessment fee (£90 + VAT) and hourly labour rate (£85/hr + VAT). All parts discussed and approved before fitting.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="feature-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="feature-icon"&gt;🔧&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Quality Repairs&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Professional workmanship performed to high standards. We focus on practical, sensible solutions to get you back on the road.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="pricing-section"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="section-header"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2&gt;Simple, Honest Pricing&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;No hidden costs, no surprises&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="pricing-grid"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="pricing-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-label"&gt;Assessment Fee&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-value"&gt;£90&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-unit"&gt;+ VAT (fixed)&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-note"&gt;Comprehensive diagnostic evaluation&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="pricing-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-label"&gt;Labour Rate&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-value"&gt;£85&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-unit"&gt;per hour + VAT&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="pricing-note"&gt;Professional workmanship&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="cta-section"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Ready to Get Started?&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;Contact us to arrange delivery and assessment of your vehicle&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="tel:01234567890" class="btn"&gt;📞 Call 01234 567 890&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer class="footer"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;CVS Cornwall Vehicle Services&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;Professional vehicle assessment and repair - Delivery-only service&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="footer-copy"&gt;© 2025 CVS Cornwall Vehicle Services. All rights reserved.&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="chat-widget"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button class="chat-button" onclick="toggleChat()" aria-label="Open chat"&gt;💬&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="chat-window" id="chatWindow"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="chat-header"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;CVS Assistant&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="chat-header-subtitle"&gt;AI-powered support with mechanic expertise&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button class="chat-close" onclick="toggleChat()" aria-label="Close chat"&gt;×&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="chat-messages" id="chatMessages"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="chat-message bot"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="message-avatar"&gt;🔧&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="message-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>Hello! I'm the CVS Assistant with mechanic expertise. I can help with quotes and answer questions about our delivery-only service. What can I help you with today?</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="chat-input-area"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;form class="chat-input-form" onsubmit="sendMessage(event)"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;input type="text" class="chat-input" id="chatInput" placeholder="Ask about quotes, services..." autocomplete="off"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button type="submit" class="chat-send" id="sendBtn" aria-label="Send message"&gt;➤&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/form&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const CVS_SYSTEM_PROMPT = "You are the CVS Assistant - an AI with professional mechanic expertise for CVS Cornwall Vehicle Services. CRITICAL BUSINESS RULES: CVS is DELIVERY-ONLY. We do NOT collect vehicles, attend roadside breakdowns, or provide recovery/towing. Vehicles MUST be delivered to CVS by a recovery provider or prior arrangement. We operate seasonally: June to September. PRICING (always include +VAT): Assessment Fee: £90 + VAT (fixed). Labour Rate: £85/hour + VAT. Parts: Discussed and approved before fitting. MECHANIC EXPERTISE: Brake pads need 2 sets (left + right), recommend checking discs. Brake discs REQUIRE new pads. Timing belt: recommend water pump at same time. Spark plugs match cylinder count. Oil service includes filter. TONE: Professional, calm, trustworthy, helpful. Be concise. For complex queries, encourage calling: 01234 567 890";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let conversationHistory = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let isTyping = false;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function toggleChat() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const chatWindow = document.getElementById('chatWindow');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>chatWindow.classList.toggle('active');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (chatWindow.classList.contains('active')) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('chatInput').focus();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>async function sendMessage(event) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>event.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (isTyping) return;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const input = document.getElementById('chatInput');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const message = input.value.trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!message) return;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>addMessage(message, 'user');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>input.value = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>conversationHistory.push({ role: 'user', content: message });</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>isTyping = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('sendBtn').disabled = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const typingEl = addTypingIndicator();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const response = await fetch('https://api.anthropic.com/v1/messages', {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>method: 'POST',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>headers: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>'Content-Type': 'application/json',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>'x-api-key': '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',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>'anthropic-version': '2023-06-01',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>'anthropic-dangerous-direct-browser-access': 'true'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>body: JSON.stringify({</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>model: 'claude-sonnet-4-20250514',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>max_tokens: 1024,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>system: CVS_SYSTEM_PROMPT,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>messages: conversationHistory</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>})</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (!response.ok) throw new Error('API error: ' + response.status);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const data = await response.json();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const botReply = data.content[0].text;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>conversationHistory.push({ role: 'assistant', content: botReply });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>typingEl.remove();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>addMessage(botReply, 'bot');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error('Chat error:', error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>typingEl.remove();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>addMessage("I'm having trouble connecting right now. Please call us directly at 01234 567 890 and we'll be happy to help!", 'bot');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} finally {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>isTyping = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('sendBtn').disabled = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function addMessage(text, sender) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const messagesDiv = document.getElementById('chatMessages');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const messageDiv = document.createElement('div');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messageDiv.className = 'chat-message ' + sender;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const formattedText = text.replace(/\n/g, '&lt;br&gt;');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messageDiv.innerHTML = '&lt;div class="message-avatar"&gt;' + (sender === 'bot' ? '🔧' : '👤') + '&lt;/div&gt;&lt;div class="message-content"&gt;' + formattedText + '&lt;/div&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messagesDiv.appendChild(messageDiv);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messagesDiv.scrollTop = messagesDiv.scrollHeight;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function addTypingIndicator() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const messagesDiv = document.getElementById('chatMessages');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const messageDiv = document.createElement('div');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messageDiv.className = 'chat-message bot';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messageDiv.id = 'typingIndicator';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messageDiv.innerHTML = '&lt;div class="message-avatar"&gt;🔧&lt;/div&gt;&lt;div class="message-content"&gt;&lt;div class="typing-indicator"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messagesDiv.appendChild(messageDiv);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>messagesDiv.scrollTop = messagesDiv.scrollHeight;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return messageDiv;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.addEventListener('keydown', function(e) { if (e.key === 'Escape') document.getElementById('chatWindow').classList.remove('active'); });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<p class="p1"><span class="s1">HTMLEOF</span></p>
 </body>
 </html>
